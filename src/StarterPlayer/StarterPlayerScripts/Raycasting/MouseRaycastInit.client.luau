@@ -10,15 +10,15 @@ local PlayerScripts = Player.PlayerScripts
 local Raycaster = require(script.Parent.Raycaster)
 
 --Events
-local SlotDeselected : BindableEvent = PlayerScripts.BindableEvents.SlotDeselected
-local SlotSelected : BindableEvent = PlayerScripts.BindableEvents.SlotSelected
+local SlotDeselected : BindableEvent = PlayerScripts.BindableEvents.Hotbar.SlotDeselected
+local SlotSelected : BindableEvent = PlayerScripts.BindableEvents.Hotbar.SlotSelected
 
 local StartRaycasting : RBXScriptConnection
 local StopRaycasting : RBXScriptConnection
 
 Player.CharacterAdded:Connect(function()
-     StartRaycasting = SlotSelected:Connect(Raycaster.Start)
-     StopRaycasting = SlotDeselected:Connect(Raycaster.Stop)
+     StartRaycasting = SlotSelected.Event:Connect(Raycaster.Start)
+     StopRaycasting = SlotDeselected.Event:Connect(Raycaster.Stop)
 end)
 
 Player.CharacterRemoving:Connect(function()

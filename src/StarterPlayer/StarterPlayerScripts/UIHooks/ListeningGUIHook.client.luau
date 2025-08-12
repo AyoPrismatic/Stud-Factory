@@ -17,10 +17,7 @@ local ListenerFunctions = require(PlayerScripts.UIHandlers.ListenerFunctionHandl
 --Read only list of Functions(Attribute Names) connecting to Actions(Functions)
 local Functions = table.freeze({
 	--[[Specific uses]]
-	['UnitPlacementActivation'] = ListenerFunctions.UnitPlacementActivation,
-	['SlotUpdater'] = ListenerFunctions.SlotUpdater,
-	['PlayerVoted'] = ListenerFunctions.PlayerVoted,
-	--[[General use]]
+	['ActiveSlotVisualizer'] = ListenerFunctions.ActiveSlotVisualizer
 })
 
 local ActiveGUI = {}

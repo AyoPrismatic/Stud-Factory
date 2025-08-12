@@ -41,7 +41,6 @@ local function UpdateRaycast()
 	
 	--Perform and return the Raycast
 	LastRaycastResult = workspace:Raycast(Ray.Origin, Ray.Direction * RaycastDistance, ModuleRayParams)
-	print(LastRaycastResult)
 end
 
 --[[Public Functions]]
@@ -72,12 +71,14 @@ end
 function RaycastModule.Start()
 	if RunningRaycasts then return end
 	RaycastModule.SetEnabled(true)
+	print("Raycasting!")
 end
 
 --Stops the raycasting
 function RaycastModule.Stop()
 	if not RunningRaycasts then return end
 	RaycastModule.SetEnabled(false)
+	print("Raycasting stopped.")
 end
 
 --Returns if the raycaster is on or off
