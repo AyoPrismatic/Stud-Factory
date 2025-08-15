@@ -10,16 +10,13 @@ local PlayerGUI = Player.PlayerGui
 --GUI
 local GameGUI = PlayerGUI:WaitForChild('GameGUI')
 
---Modules
-local GUIFuncs = require(ReplicatedStorage.Modules.CachedHelperFunctions)
-
 local Hover = {}
 
 --[[Hover Functions]]
 
 function Hover.ScaleUp(Button : TextButton)
-	local OutTweeninfo = GUIFuncs.NewTweenInfo({T = 0.25, D = "Out"})
-	local InTweeninfo = GUIFuncs.NewTweenInfo({T = 0.15, D = "In"})
+	local OutTweeninfo = TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
+	local InTweeninfo = TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.In)
 	local BaseSize = Button:GetAttribute("ScaleUpBaseSize")
 	
 	if not BaseSize then
@@ -30,7 +27,7 @@ function Hover.ScaleUp(Button : TextButton)
 	local ScaleDownDelay = Button:GetAttribute("ScaleDownDelay") or 0
 	local ScaleSize = Button:GetAttribute("ScaleSize") or 0.0085
 	
-	local TweenedSize = BaseSize + UDim2.new(ScaleSize,0,ScaleSize,0)
+	local TweenedSize = BaseSize + UDim2.new(ScaleSize, 0, ScaleSize, 0)
 	
 	--Play the animation
 	local Tween = TweenService:Create(Button, InTweeninfo, {Size = TweenedSize})

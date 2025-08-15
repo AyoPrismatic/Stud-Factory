@@ -10,9 +10,6 @@ local PlayerGUI = Player.PlayerGui
 --GUI
 local GameGUI = PlayerGUI:WaitForChild('GameGUI')
 
---Modules
-local CachedHelperFunctions = require(ReplicatedStorage.Modules.CachedHelperFunctions)
-
 local Listener = {}
 
 --[[UI Specific]]

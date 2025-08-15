@@ -16,9 +16,6 @@ local ContextHovers = require(PlayerScripts.UIHandlers.ContextHoverHandler)
 
 --Read only list of Contexts(Attribute Values) connecting to Actions(Functions)
 local Contexts = table.freeze({
-	['UnitStatDisplay'] = ContextHovers.UnitStatDisplay,
-	['ColorShift'] = ContextHovers.ColorShift,
-	['Brighten'] = ContextHovers.Brighten,
 	['ScaleUp'] = ContextHovers.ScaleUp,
 })
 

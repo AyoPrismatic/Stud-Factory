@@ -1,6 +1,5 @@
 --Services
 local ReplicatedStorage = game:GetService('ReplicatedStorage')
-local TweenService = game:GetService('TweenService')
 local Players = game:GetService('Players')
 
 --Player
@@ -26,19 +25,6 @@ function Actions.FireEvent(Button : TextButton)
      end
 end
 
-function Actions.EditAttributes(Button : TextButton)
-     local AttributesToChange = Button:GetAttribute("AttributesToChange")
-     local ValuesSplitter = Button:GetAttribute("ValuesSplitter") or ", "
-     local AttributeValues = Button:GetAttribute("AttributeValues")
-
-     AttributesToChange = string.split(AttributesToChange, ValuesSplitter)
-     AttributeValues = string.split(AttributeValues, ValuesSplitter)
-
-     for i = 1, #AttributeValues do
-          Button:SetAttribute(AttributesToChange[i], AttributeValues[i])
-     end
-end
-
 function Actions.SwapAttributes(Button : TextButton)
      local AttributesToSwap = Button:GetAttribute("AttributesToSwap")
      AttributesToSwap = string.split(AttributesToSwap, ", ")
@@ -48,6 +34,17 @@ function Actions.SwapAttributes(Button : TextButton)
 
      Button:SetAttribute(AttributesToSwap[1], Attr2)
      Button:SetAttribute(AttributesToSwap[2], Attr1)
+end
+
+local PlotRequester = ReplicatedStorage.Events.PlotEvents.FromClient.RequestPlot
+function Actions.RequestPlot(Button : TextButton)
+     local PlotIndex = Button:GetAttribute("PlotIndex")
+     if not PlotIndex then
+          warn(`Plot Index not found for {Button}!`)
+          return
+     end
+
+     PlotRequester:FireServer(PlotIndex)
 end
 
 return Actions

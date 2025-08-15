@@ -20,6 +20,8 @@ local Contexts = table.freeze({
 	['EditAttributes'] = ContextActions.EditAttributes,
 	['SwapAttributes'] = ContextActions.SwapAttributes,
 	['FireEvent'] = ContextActions.FireEvent,
+	--[[UI Specific]]
+	['RequestPlot'] = ContextActions.RequestPlot,
 })
 
 local ActiveGUI = {}
