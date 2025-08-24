@@ -47,4 +47,14 @@ function Actions.RequestPlot(Button : TextButton)
      PlotRequester:FireServer(PlotIndex)
 end
 
+--[[UI Specific]]
+local GlobalChunkLoaderData = require(PlayerScripts.ChunkLoaders.LoaderGlobals)
+function Actions.PrintPlotLoadTime(Button : TextButton)
+     for PlotIndex, LoadTime in GlobalChunkLoaderData.LoadTimes do
+          if LoadTime == 0 then continue end
+          
+          print(`Took {math.round(LoadTime * 1000000) / 1000} Ms to load plot {PlotIndex}`)
+     end
+end
+
 return Actions

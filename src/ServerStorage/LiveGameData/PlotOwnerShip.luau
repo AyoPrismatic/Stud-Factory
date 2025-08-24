@@ -7,9 +7,6 @@ local Players = game:GetService("Players")
 local PlotEvents = ReplicatedStorage.Events.PlotEvents
 local ServerPlotEvents = PlotEvents.FromServer
 
---Modules
-local PlotChunkDataManager = require(ServerStorage.LiveGameData.PlotChunkDatastore)
-
 --Game Events
 local PlotAbandoned : RemoteEvent = ServerPlotEvents.PlotAbandoned
 local PlotClaimed : RemoteEvent = ServerPlotEvents.PlotClaimed
@@ -26,21 +23,19 @@ local PlotManager = {}
 
 --[[Actions]]
 
-function PlotManager.ClaimPlot(Player : Player, PlotNumber : number) : boolean
+function PlotManager.ClaimPlot(Player : Player, PlotNumber : number)
      if not Plots[PlotNumber] then
           warn(`{Player} tried to claim an invalid Plot!`)
-          return false
+          return
      end
 
      if Plots[PlotNumber] ~= "" then
           warn(`{Player} tried to claim an owned Plot!`)
-          return false
+          return
      end
 
-     PlotChunkDataManager.PlayerClaimedPlot(Player, PlotNumber)
      PlotClaimed:FireAllClients(Player, PlotNumber)
      Plots[PlotNumber] = Player
-     return true
 end
 
 local function AbandonPlot(Player : Player, PlotIndex : number)
@@ -52,7 +47,6 @@ local function AbandonPlot(Player : Player, PlotIndex : number)
           end
      end
 
-     PlotChunkDataManager.PlayerAbandonedPlot(Player, PlotIndex)
      PlotAbandoned:FireAllClients(Player, PlotNumber)
      Plots[PlotNumber] = ""
 end

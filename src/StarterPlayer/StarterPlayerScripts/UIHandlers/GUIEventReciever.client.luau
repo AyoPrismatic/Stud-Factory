@@ -28,7 +28,7 @@ PlotClaimedEvent.OnClientEvent:Connect(function(PlotOwner, ClaimedPlotNumber)
      end
 
      local Character = Player.Character
-     Character:PivotTo(CFrame.new(0,20,0))
+     --Character:PivotTo(Character:GetPivot() * CFrame.new(0,20,0))
 
      PlotSelectionGUI:Destroy()
 end)

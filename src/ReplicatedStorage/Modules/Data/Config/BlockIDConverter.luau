@@ -1,27 +1,21 @@
 --[[
-	I know this is awful, but it's a 1 dimensional array of BlockIDs - Block Names
-	This is done for performance so the client can know what block to place through
-	only a small set of a bits.
+	Blocks are stored in a 1d array to have the server send compact block IDs to the client.
 --]]
 
 local Config = {}
 
-Config.BlockNameToBlockID = {
-	Bedrock 	= 0,
-	Dirt 	= 1,
-	Grass 	= 2,
+local BlockNames = {
+	"Air",
+	"Bedrock",
+	"Dirt",
+	"Grass",
 }
 
-Config.BlockIDToBlockName = {}
+Config.BlockNameToBlockID = {}
+Config.BlockIDToBlockName = BlockNames
 
-for BlockName, BlockID in Config.BlockNameToBlockID do
-	local StoredBlockName = Config.BlockIDToBlockName[BlockID]
-
-	if not StoredBlockName then
-		Config.BlockIDToBlockName[BlockID] = BlockName
-	else
-		error(`Conflicting/Duplicate Block IDs! {BlockName} tried overwriting {StoredBlockName}`)
-	end
+for BlockID, BlockNames in BlockNames do
+	Config.BlockNameToBlockID[BlockNames] = BlockID
 end
 
 return Config

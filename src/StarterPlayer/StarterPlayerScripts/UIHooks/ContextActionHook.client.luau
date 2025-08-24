@@ -21,6 +21,7 @@ local Contexts = table.freeze({
 	['SwapAttributes'] = ContextActions.SwapAttributes,
 	['FireEvent'] = ContextActions.FireEvent,
 	--[[UI Specific]]
+	['PrintPlotLoadTime'] = ContextActions.PrintPlotLoadTime,
 	['RequestPlot'] = ContextActions.RequestPlot,
 })
 

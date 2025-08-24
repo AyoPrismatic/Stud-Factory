@@ -6,12 +6,15 @@ local TableFunctions = require(ReplicatedStorage.Modules.DataUtils.TableFunction
 
 --[[Initalizing Data]]
 local BlockIDData = require(script.BlockIDConverter)
+local CullingIgnoreList = require(script.BlockCullingData)
 
 local Config = {
 	BlockIDData = {
 		IDToName = BlockIDData.BlockIDToBlockName,
 		NameToID = BlockIDData.BlockNameToBlockID
-	}
+	},
+	
+	CullingIgnoreList = CullingIgnoreList
 }
 
 --[[Accessor Methods]]
@@ -57,6 +60,14 @@ function Config:GetData(Name : string)
 	end
 	
 	return self[Name]
+end
+
+function Config:CullBlock(ID) : boolean
+	if CullingIgnoreList[ID] then
+		return false
+	else
+		return true
+	end
 end
 
 --[[Exporting Nested Types]]

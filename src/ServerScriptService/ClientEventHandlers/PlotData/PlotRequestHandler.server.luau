@@ -36,6 +36,6 @@ PlotRequestEvent.OnServerEvent:Connect(function(Player : Player, PlotIndex : num
           warn(`{Player} Requested a taken or invalid Plot! [{PlotIndex}]`)
           return
      end
-
+     
      PlotManager.ClaimPlot(Player, PlotIndex)
 end)
